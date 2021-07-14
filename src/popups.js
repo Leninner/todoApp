@@ -67,4 +67,11 @@ function doFormItem() {
     main.appendChild(overlay);
 }
 
-export default doFormItem;
+function doTareas(title, description, date, priority) {
+    this.title = title;
+    this.description = description;
+    this.date = date;
+    this.priority = priority;
+}
+
+export { doFormItem, doTareas };

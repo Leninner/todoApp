@@ -177,3 +177,23 @@
     background: black;
     color: white;
 }
+
+.muestra {
+    width: 80%;
+    height: 150px;
+    margin: 0 auto;
+    color: black;
+    margin-top: 20px;
+}
+
+.muestra.one {
+    background-color: red;
+}
+
+.muestra.two {
+    background-color: green;
+}
+
+.muestra.three {
+    background-color: white;
+}
