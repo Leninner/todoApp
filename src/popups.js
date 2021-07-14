@@ -14,52 +14,57 @@ function doFormItem() {
         priorityListItem = document.createElement("select"),
         optionPriorityOne = document.createElement("option"),
         optionPriorityTwo = document.createElement("option"),
-        optionPriorityThree = document.createElement("option");
+        optionPriorityThree = document.createElement("option"),
+        btnAñadir = document.createElement("input");
 
-    //         <select name="combo">
-    //     <!-- Opciones de la lista -->
-    //     <option value="1">Opción 1</option>
-    //     <option value="2" selected>Opción 2</option> <!-- Opción por defecto -->
-    //     <option value="3">Opción 3</option>
-    //   </select>
+    titleAddItem.textContent = "Añadir Nueva Tarea";
 
     overlay.classList.add("overlay");
     popup.classList.add("popup");
     cerrarPopup.classList.add("cerrarPopup");
-    fas.classList.add("fas fa-times");
+    fas.classList.add("fas", "fa-times");
     formAddItem.action = "";
     contenedorInputs.classList.add("contenedor-inputs");
+    btnAñadir.classList.add("btn-añadir");
 
+    btnAñadir.type = "button";
+    btnAñadir.value = "Añadir";
     titleItem.type = "text";
     titleItem.placeholder = "Tarea";
+    titleItem.setAttribute("id", "titleItem");
     descriptionItem.type = "text";
     descriptionItem.placeholder = "Añade una descripción";
+    descriptionItem.setAttribute("id", "descriptionItem");
     dueDateItem.type = "date";
+    dueDateItem.setAttribute("id", "dueDate");
     priorityListItem.name = "combo";
+    priorityListItem.setAttribute("id", "priorityItem");
     optionPriorityOne.value = "1";
-    optionPriorityOne.textContent = "Opción 1";
+    optionPriorityOne.textContent = "Prioridad: Alta";
+    optionPriorityOne.setAttribute("id", "optionOne");
     optionPriorityTwo.value = "2";
-    optionPriorityTwo.textContent = "Opción 2";
+    optionPriorityTwo.textContent = "Prioridad: Media";
+    optionPriorityTwo.setAttribute("id", "optionTwo");
     optionPriorityThree.value = "3";
-    optionPriorityThree.textContent = "Opción 3";
+    optionPriorityThree.textContent = "Prioridad: Baja";
+    optionPriorityThree.setAttribute("id", "optionThree");
+
+    priorityListItem.append(
+        optionPriorityOne,
+        optionPriorityTwo,
+        optionPriorityThree
+    );
+    contenedorInputs.append(
+        titleItem,
+        descriptionItem,
+        dueDateItem,
+        priorityListItem
+    );
+    formAddItem.append(contenedorInputs, btnAñadir);
+    cerrarPopup.appendChild(fas);
+    popup.append(cerrarPopup, titleAddItem, formAddItem);
+    overlay.appendChild(popup);
+    main.appendChild(overlay);
 }
 
-/* <div class="overlay">
-            <!-- Formulario -->
-            <div class="popup">
-                <div class="cerrarPopup"><i class="fas fa-times"></i></div>
-                <h3>Añade Un Nuevo Libro</h3>
-                <h4>Y Sigue Soñando</h4>
-                <form action="">
-                    <div class="contenedor-inputs">
-                        <input type="text" placeholder="Nombre del Libro" id="title">
-                        <input type="text" placeholder="Autor del Libro" id="author">
-                        <input type="number" placeholder="Año de Publicación" id="year">
-                        <input type="number" placeholder="Número de Páginas" id="pages">
-                        <h4>¿Ya Lo Leíste?</h4>
-                        <input id="check" type="checkbox">
-                    </div>
-                    <input type="button" class="btn-añadir" value="Añadir">
-                </form>
-            </div>
-        </div> */
+export default doFormItem;

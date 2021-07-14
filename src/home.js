@@ -19,8 +19,10 @@ function doMainButtoms() {
 
     addItem.type = "button";
     addItem.value = "Añadir Tarea";
+    addItem.setAttribute("id", "addItem");
     addProject.type = "button";
     addProject.value = "Añadir Proyecto";
+    addProject.setAttribute("id", "addProjects");
 
     divMainButtoms.classList.add("main-buttoms");
 
