@@ -1,8 +1,9 @@
-import { doFormItem, doTareas } from "./popups.js";
+import { doFormItem, doTareas, doFormProjects, doProjects } from "./popups.js";
 
 const main = document.querySelector(".main");
 
-let tareas = [];
+let tareas = [],
+    proyectos = [];
 
 function doHeader() {
     let header = document.createElement("div"),
@@ -79,7 +80,9 @@ function doBoxesProject() {
     boxProjects.classList.add("boxProjects");
     upBoxProjects.classList.add("boxTodosMain");
     penProjects.classList.add("boxesMain");
+    penProjects.setAttribute("id", "cajaPendientes");
     wentProjects.classList.add("boxesMain");
+    wentProjects.setAttribute("id", "cajaRealizados");
 
     penProjects.appendChild(titlePenProjects);
     wentProjects.appendChild(titlewentProjects);
@@ -95,36 +98,12 @@ function doHomePage() {
     doBoxesProject();
 }
 
-// Para añadir cajas a las tareas pendientes
 function addItemToPendient(title, description, date, priority) {
-    const pendientesMain = document.querySelector("#pendientesMain");
-
     let tarea = new doTareas(title, description, date, priority);
+}
 
-    tareas.push(tarea);
-    console.log(tareas);
-
-    let divMuestra = document.createElement("div"),
-        titleMuestra = document.createElement("h3"),
-        descripcionMuestra = document.createElement("p"),
-        fechaMuestra = document.createElement("p");
-
-    titleMuestra.textContent = tarea.title;
-    descripcionMuestra.textContent = tarea.description;
-    fechaMuestra.textContent = tarea.date;
-
-    divMuestra.classList.add("muestra");
-
-    if (tarea.priority == 1) {
-        divMuestra.classList.add("one");
-    } else if (tarea.priority == 2) {
-        divMuestra.classList.add("two");
-    } else {
-        divMuestra.classList.add("three");
-    }
-
-    divMuestra.append(titleMuestra, descripcionMuestra, fechaMuestra);
-    pendientesMain.appendChild(divMuestra);
+function addItemToProjects(title, description, date, priority) {
+    let proyecto = new doProjects(title, description, date, priority);
 }
 
 function displayFormItemMain() {
@@ -171,4 +150,48 @@ function displayFormItemMain() {
     });
 }
 
-export { doHomePage, doBoxTodosMain, displayFormItemMain };
+function displayFormProjects() {
+    const addProjects = document.querySelector("#addProjects");
+
+    addProjects.addEventListener("click", () => {
+        // NOTE: Código para solucionar problema de las cajas repetidas
+        if (main.childNodes[4]) {
+            main.removeChild(main.childNodes[4]);
+        }
+
+        console.log(main.childNodes);
+
+        doFormProjects();
+
+        let cerrarPopup = document.querySelector(".cerrarPopup"),
+            overlay = document.querySelector(".overlay"),
+            popup = document.querySelector(".popup"),
+            btnAñadir = document.querySelector(".btn-añadir"),
+            titleItem = document.querySelector("#titleProject"),
+            descriptionItem = document.querySelector("#descriptionProject"),
+            dueDate = document.querySelector("#dueDateProject"),
+            priorityListItem = document.querySelector("#priorityProjects");
+
+        overlay.classList.add("active");
+        popup.classList.add("active");
+
+        cerrarPopup.addEventListener("click", () => {
+            overlay.classList.remove("active");
+            popup.classList.remove("active");
+        });
+
+        btnAñadir.addEventListener("click", () => {
+            overlay.classList.remove("active");
+            popup.classList.remove("active");
+
+            addItemToProjects(
+                titleItem.value,
+                descriptionItem.value,
+                dueDate.value,
+                priorityListItem.value
+            );
+        });
+    });
+}
+
+export { doHomePage, doBoxTodosMain, displayFormItemMain, displayFormProjects };
