@@ -135,7 +135,6 @@
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 20px;
-    /* opacity: 0; */
 }
 
 .popup form .contenedor-inputs input {
@@ -182,7 +181,6 @@
     width: 80%;
     height: 150px;
     margin: 0 auto;
-    color: black;
     margin-top: 20px;
 }
 

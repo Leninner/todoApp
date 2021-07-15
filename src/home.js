@@ -2,6 +2,8 @@ import { doFormItem, doTareas } from "./popups.js";
 
 const main = document.querySelector(".main");
 
+let tareas = [];
+
 function doHeader() {
     let header = document.createElement("div"),
         titleHeader = document.createElement("h1");
@@ -94,31 +96,28 @@ function doHomePage() {
 }
 
 // Para añadir cajas a las tareas pendientes
-function addItemToPendient(
-    title = "Hi",
-    description = "Jajajaj",
-    date = "45/78/78",
-    priority = "2"
-) {
-    const pendientesMain = document.querySelector("#pendientesMain"),
-        cajaGeneralItems = document.querySelector(".boxTodosMain"),
-        main = document.querySelector(".main"),
-        boxTask = document.querySelector(".boxProjects");
+function addItemToPendient(title, description, date, priority) {
+    const pendientesMain = document.querySelector("#pendientesMain");
+
+    let tarea = new doTareas(title, description, date, priority);
+
+    tareas.push(tarea);
+    console.log(tareas);
 
     let divMuestra = document.createElement("div"),
         titleMuestra = document.createElement("h3"),
         descripcionMuestra = document.createElement("p"),
         fechaMuestra = document.createElement("p");
 
-    titleMuestra.textContent = title;
-    descripcionMuestra.textContent = description;
-    fechaMuestra.textContent = date;
+    titleMuestra.textContent = tarea.title;
+    descripcionMuestra.textContent = tarea.description;
+    fechaMuestra.textContent = tarea.date;
 
     divMuestra.classList.add("muestra");
 
-    if (priority == 1) {
+    if (tarea.priority == 1) {
         divMuestra.classList.add("one");
-    } else if (priority == 2) {
+    } else if (tarea.priority == 2) {
         divMuestra.classList.add("two");
     } else {
         divMuestra.classList.add("three");
@@ -126,10 +125,6 @@ function addItemToPendient(
 
     divMuestra.append(titleMuestra, descripcionMuestra, fechaMuestra);
     pendientesMain.appendChild(divMuestra);
-    cajaGeneralItems.appendChild(pendientesMain);
-    boxTask.appendChild(cajaGeneralItems);
-    main.appendChild(boxTask);
-    //TODO: Arreglar la forma de insertar tareas generales a los elementos
 }
 
 function displayFormItemMain() {
@@ -137,7 +132,8 @@ function displayFormItemMain() {
 
     addItems.addEventListener("click", () => {
         doFormItem();
-        const cerrarPopup = document.querySelector(".cerrarPopup"),
+
+        let cerrarPopup = document.querySelector(".cerrarPopup"),
             overlay = document.querySelector(".overlay"),
             popup = document.querySelector(".popup"),
             btnAñadir = document.querySelector(".btn-añadir"),
@@ -149,27 +145,21 @@ function displayFormItemMain() {
         overlay.classList.add("active");
         popup.classList.add("active");
 
-        cerrarPopup.addEventListener("click", () => {
-            overlay.classList.remove("active");
-            popup.classList.remove("active");
-        });
+        // cerrarPopup.addEventListener("click", () => {
+        //     overlay.classList.remove("active");
+        //     popup.classList.remove("active");
+        // });
 
         btnAñadir.addEventListener("click", () => {
-            let tarea = new doTareas(
+            // overlay.classList.remove("active");
+
+            addItemToPendient(
                 titleItem.value,
                 descriptionItem.value,
                 dueDate.value,
                 priorityListItem.value
             );
-
-            console.log(tarea);
-            addItemToPendient(
-                tarea.title,
-                tarea.description,
-                tarea.date,
-                tarea.priority
-            );
-            tarea = "";
+            // popup.classList.remove("active");
         });
     });
 }
