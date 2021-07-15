@@ -131,6 +131,13 @@ function displayFormItemMain() {
     const addItems = document.querySelector("#addItem");
 
     addItems.addEventListener("click", () => {
+        // NOTE: Código para solucionar problema de las cajas repetidas
+        if (main.childNodes[4]) {
+            main.removeChild(main.childNodes[4]);
+        }
+
+        console.log(main.childNodes);
+
         doFormItem();
 
         let cerrarPopup = document.querySelector(".cerrarPopup"),
@@ -145,13 +152,14 @@ function displayFormItemMain() {
         overlay.classList.add("active");
         popup.classList.add("active");
 
-        // cerrarPopup.addEventListener("click", () => {
-        //     overlay.classList.remove("active");
-        //     popup.classList.remove("active");
-        // });
+        cerrarPopup.addEventListener("click", () => {
+            overlay.classList.remove("active");
+            popup.classList.remove("active");
+        });
 
         btnAñadir.addEventListener("click", () => {
-            // overlay.classList.remove("active");
+            overlay.classList.remove("active");
+            popup.classList.remove("active");
 
             addItemToPendient(
                 titleItem.value,
@@ -159,7 +167,6 @@ function displayFormItemMain() {
                 dueDate.value,
                 priorityListItem.value
             );
-            // popup.classList.remove("active");
         });
     });
 }

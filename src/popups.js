@@ -23,7 +23,6 @@ function doFormItem() {
     popup.classList.add("popup");
     cerrarPopup.classList.add("cerrarPopup");
     fas.classList.add("fas", "fa-times");
-    formAddItem.action = "";
     contenedorInputs.classList.add("contenedor-inputs");
     btnAñadir.classList.add("btn-añadir");
 
