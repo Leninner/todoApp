@@ -115,7 +115,7 @@ function displayFormItemMain() {
             main.removeChild(main.childNodes[4]);
         }
 
-        doFormItem();
+        doFormItem("Añadir Nueva Tarea", "Tarea");
 
         let cerrarPopup = document.querySelector(".cerrarPopup"),
             overlay = document.querySelector(".overlay"),
@@ -157,7 +157,8 @@ function displayFormProjects() {
             main.removeChild(main.childNodes[4]);
         }
 
-        doFormProjects();
+        doFormProjects("Añadir Nuevo Proyecto", "Proyecto");
+        // doFormItem("Añadir Nuevo Proyecto");
 
         let cerrarPopup = document.querySelector(".cerrarPopup"),
             overlay = document.querySelector(".overlay"),

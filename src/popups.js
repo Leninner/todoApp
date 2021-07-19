@@ -2,7 +2,7 @@ import deleteItemsMain from "./deleteItems.js";
 
 const main = document.querySelector(".main");
 
-function doFormItem() {
+function doFormItem(title, typeTitle) {
     let overlay = document.createElement("div"),
         popup = document.createElement("div"),
         cerrarPopup = document.createElement("div"),
@@ -19,7 +19,7 @@ function doFormItem() {
         optionPriorityThree = document.createElement("option"),
         btnAñadir = document.createElement("input");
 
-    titleAddItem.textContent = "Añadir Nueva Tarea";
+    titleAddItem.textContent = title;
 
     overlay.classList.add("overlay");
     popup.classList.add("popup");
@@ -31,7 +31,7 @@ function doFormItem() {
     btnAñadir.type = "button";
     btnAñadir.value = "Añadir";
     titleItem.type = "text";
-    titleItem.placeholder = "Tarea";
+    titleItem.placeholder = typeTitle;
     titleItem.setAttribute("id", "titleItem");
     descriptionItem.type = "text";
     descriptionItem.placeholder = "Añade una descripción";
@@ -68,7 +68,7 @@ function doFormItem() {
     main.appendChild(overlay);
 }
 
-function doFormProjects() {
+function doFormProjects(title, typeTitle) {
     let overlay = document.createElement("div"),
         popup = document.createElement("div"),
         cerrarPopup = document.createElement("div"),
@@ -85,7 +85,7 @@ function doFormProjects() {
         optionPriorityThree = document.createElement("option"),
         btnAñadir = document.createElement("input");
 
-    titleAddItem.textContent = "Añadir Nuevo Proyecto";
+    titleAddItem.textContent = title;
 
     overlay.classList.add("overlay");
     popup.classList.add("popup");
@@ -97,7 +97,7 @@ function doFormProjects() {
     btnAñadir.type = "button";
     btnAñadir.value = "Añadir";
     titleItem.type = "text";
-    titleItem.placeholder = "Proyecto";
+    titleItem.placeholder = typeTitle;
     titleItem.setAttribute("id", "titleProject");
     descriptionItem.type = "text";
     descriptionItem.placeholder = "Añade una descripción";
