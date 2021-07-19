@@ -1,3 +1,5 @@
+import deleteItemsMain from "./deleteItems.js";
+
 const main = document.querySelector(".main");
 
 function doFormItem() {
@@ -143,13 +145,21 @@ function doTareas(title, description, date, priority) {
     let divMuestra = document.createElement("div"),
         titleMuestra = document.createElement("h3"),
         descripcionMuestra = document.createElement("p"),
-        fechaMuestra = document.createElement("p");
+        fechaMuestra = document.createElement("p"),
+        deleteBox = document.createElement("input"),
+        doyaBox = document.createElement("input");
 
     titleMuestra.textContent = this.title;
     descripcionMuestra.textContent = this.description;
     fechaMuestra.textContent = this.date;
+    deleteBox.value = "Delete";
+    deleteBox.type = "button";
+    doyaBox.value = "Do ya";
+    doyaBox.type = "button";
 
     divMuestra.classList.add("muestra");
+    deleteBox.classList.add("btnTareas", "delete");
+    doyaBox.classList.add("btnTareas", "doya");
 
     if (this.priority == 1) {
         divMuestra.classList.add("one");
@@ -159,28 +169,53 @@ function doTareas(title, description, date, priority) {
         divMuestra.classList.add("three");
     }
 
-    divMuestra.append(titleMuestra, descripcionMuestra, fechaMuestra);
+    deleteBox.addEventListener("click", () => {
+        console.log("Este botón borra cosas", deleteBox.classList);
+    });
+
+    doyaBox.addEventListener("click", () => {
+        console.log("Este botón completa cosas", doyaBox.classList);
+    });
+
+    //TODO: Crear botón para eliminar y completar cajas
+
+    divMuestra.append(
+        titleMuestra,
+        descripcionMuestra,
+        fechaMuestra,
+        deleteBox,
+        doyaBox
+    );
+
     pendientesMain.appendChild(divMuestra);
 }
 
 function doProjects(title, description, date, priority) {
+    const pendientesProjects = document.querySelector("#cajaPendientes");
+
     this.title = title;
     this.description = description;
     this.date = date;
     this.priority = priority;
 
-    const pendientesProjects = document.querySelector("#cajaPendientes");
-
     let divMuestra = document.createElement("div"),
         titleMuestra = document.createElement("h3"),
         descripcionMuestra = document.createElement("p"),
-        fechaMuestra = document.createElement("p");
+        fechaMuestra = document.createElement("p"),
+        deleteBox = document.createElement("input"),
+        doyaBox = document.createElement("input");
 
     titleMuestra.textContent = this.title;
     descripcionMuestra.textContent = this.description;
     fechaMuestra.textContent = this.date;
+    deleteBox.value = "Delete";
+    deleteBox.type = "button";
+    doyaBox.value = "Do ya";
+    doyaBox.type = "button";
 
     divMuestra.classList.add("muestra");
+    deleteBox.classList.add("btnProjects", "delete");
+    doyaBox.classList.add("btnProjects", "doya");
 
     if (this.priority == 1) {
         divMuestra.classList.add("one");
@@ -190,7 +225,21 @@ function doProjects(title, description, date, priority) {
         divMuestra.classList.add("three");
     }
 
-    divMuestra.append(titleMuestra, descripcionMuestra, fechaMuestra);
+    deleteBox.addEventListener("click", () => {
+        console.log("Este botón borra cosas", deleteBox.classList);
+    });
+
+    doyaBox.addEventListener("click", () => {
+        console.log("Este botón completa cosas", doyaBox.classList);
+    });
+
+    divMuestra.append(
+        titleMuestra,
+        descripcionMuestra,
+        fechaMuestra,
+        deleteBox,
+        doyaBox
+    );
     pendientesProjects.appendChild(divMuestra);
 }
 
