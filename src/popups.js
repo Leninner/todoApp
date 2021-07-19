@@ -1,5 +1,8 @@
 const main = document.querySelector(".main");
 
+let tareasRealizadas = [],
+    proyectosRealizados = [];
+
 //NOTE: Funciones para crear los formularios
 
 function doFormItem(title, typeTitle) {
@@ -55,12 +58,14 @@ function doFormItem(title, typeTitle) {
         optionPriorityTwo,
         optionPriorityThree
     );
+
     contenedorInputs.append(
         titleItem,
         descriptionItem,
         dueDateItem,
         priorityListItem
     );
+
     formAddItem.append(contenedorInputs, btnAñadir);
     cerrarPopup.appendChild(fas);
     popup.append(cerrarPopup, titleAddItem, formAddItem);
@@ -137,7 +142,8 @@ function doFormProjects(title, typeTitle) {
 //NOTE: Funciones constructoras para crear las cajas y añadir a las cajas correspondientes
 
 function doTareas(title, description, date, priority) {
-    const pendientesMain = document.querySelector("#pendientesMain");
+    const pendientesMain = document.querySelector("#pendientesMain"),
+        realizadosMain = document.querySelector("#realizadasMain");
 
     console.log(pendientesMain.childNodes);
 
@@ -174,11 +180,25 @@ function doTareas(title, description, date, priority) {
     }
 
     deleteBox.addEventListener("click", () => {
-        pendientesMain.removeChild(deleteBox.parentElement);
+        divMuestra.remove();
     });
 
     doyaBox.addEventListener("click", () => {
-        console.log(doyaBox.parentNode);
+        divMuestra.append(
+            titleMuestra,
+            descripcionMuestra,
+            fechaMuestra,
+            deleteBox,
+            doyaBox
+        );
+
+        divMuestra.removeChild(doyaBox);
+        realizadosMain.appendChild(divMuestra);
+
+        tareasRealizadas.push(divMuestra);
+        console.log(tareasRealizadas);
+        // pendientesMain.removeChild(divMuestra);
+        // TODO: Crear función para añadir tareas o proyectos a la caja de completadas
     });
 
     //TODO: Crear botón para eliminar y completar cajas
@@ -192,10 +212,13 @@ function doTareas(title, description, date, priority) {
     );
 
     pendientesMain.appendChild(divMuestra);
+
+    return divMuestra;
 }
 
 function doProjects(title, description, date, priority) {
-    const pendientesProjects = document.querySelector("#cajaPendientes");
+    const pendientesProjects = document.querySelector("#cajaPendientes"),
+        realizadosProjects = document.querySelector("#cajaRealizados");
 
     this.title = title;
     this.description = description;
@@ -230,12 +253,23 @@ function doProjects(title, description, date, priority) {
     }
 
     deleteBox.addEventListener("click", () => {
-        pendientesProjects.removeChild(deleteBox.parentElement);
+        divMuestra.remove();
     });
 
     doyaBox.addEventListener("click", () => {
-        console.log("Este botón completa cosas");
-        // TODO: Crear función para añadir tareas o proyectos a la caja de completadas
+        divMuestra.append(
+            titleMuestra,
+            descripcionMuestra,
+            fechaMuestra,
+            deleteBox,
+            doyaBox
+        );
+
+        divMuestra.removeChild(doyaBox);
+        realizadosProjects.appendChild(divMuestra);
+
+        proyectosRealizados.push(divMuestra);
+        console.log(proyectosRealizados);
     });
 
     divMuestra.append(
@@ -245,7 +279,10 @@ function doProjects(title, description, date, priority) {
         deleteBox,
         doyaBox
     );
+
     pendientesProjects.appendChild(divMuestra);
+
+    return divMuestra;
 }
 
 export { doFormItem, doTareas, doFormProjects, doProjects };

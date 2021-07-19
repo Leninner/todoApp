@@ -2,8 +2,8 @@ import { doFormItem, doTareas, doFormProjects, doProjects } from "./popups.js";
 
 const main = document.querySelector(".main");
 
-let tareas = [],
-    proyectos = [];
+let tareasPendientes = [],
+    proyectosPendientes = [];
 
 //NOTE: Función para crear el header
 
@@ -112,10 +112,12 @@ function doHomePage() {
 
 function addItemToPendient(title, description, date, priority) {
     let tarea = new doTareas(title, description, date, priority);
+    tareasPendientes.push(tarea);
 }
 
 function addItemToProjects(title, description, date, priority) {
     let proyecto = new doProjects(title, description, date, priority);
+    proyectosPendientes.push(proyecto);
 }
 
 //NOTE: Funciones para mostrar los formularios y que hace uso de otras funciones para crear tareas o proyectos
