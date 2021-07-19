@@ -4,6 +4,22 @@
     font-family: "Montserrat", sans-serif;
 }
 
+input {
+    cursor: pointer;
+}
+
+h1 {
+    cursor: pointer;
+}
+
+h2 {
+    cursor: pointer;
+}
+
+h3 {
+    cursor: pointer;
+}
+
 .header {
     width: 100%;
     height: 130px;
@@ -32,6 +48,14 @@
     color: white;
     font-size: 15px;
     cursor: pointer;
+}
+
+.main-buttoms input:hover {
+    color: black;
+    background-color: white;
+    transform: scale(1.1);
+    transition: 0.3s ease all;
+    border: 2px solid rgb(0, 0, 0);
 }
 
 .boxTodosMain {
@@ -88,6 +112,8 @@
 
 .overlay.active {
     visibility: visible;
+    transform: scale(1.1);
+    transition: 0.3s ease all;
 }
 
 .popup {
@@ -103,8 +129,9 @@
 }
 
 .popup.active {
+    transform: scale(1.05);
+    transition: 0.3s ease all;
     opacity: 1;
-    transform: scale(1);
 }
 
 .popup .cerrarPopup {
@@ -183,17 +210,65 @@
     margin: 0 auto;
     margin-top: 20px;
     border-radius: 20px;
-    border: 2px solid brown;
+}
+
+.muestra h3 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.muestra input {
+    margin-top: 10px;
+}
+
+.muestra p {
+    margin: 10px;
 }
 
 .muestra.one {
-    background-color: red;
+    background-color: #f72585;
+    color: white;
 }
 
 .muestra.two {
-    background-color: green;
+    background-color: #3a0ca3;
+    color: white;
 }
 
 .muestra.three {
+    background-color: #4cc9f0;
+}
+
+.btnTareas {
+    border-style: none;
+    width: 150px;
+    height: 25px;
+    color: black;
     background-color: white;
+    font-weight: 500;
+}
+
+.btnProjects {
+    border-style: none;
+    width: 150px;
+    height: 25px;
+    color: black;
+    background-color: white;
+    font-weight: 500;
+}
+
+.delete {
+    margin-right: 10px;
+}
+
+.delete:hover {
+    background-color: red;
+    color: white;
+    font-weight: 600;
+}
+
+.doya:hover {
+    background-color: green;
+    color: white;
+    font-weight: 600;
 }

@@ -82,8 +82,8 @@ function doBoxesProject() {
         titlewentProjects = document.createElement("h2");
 
     titleProjects.textContent = "Proyectos";
-    titlePenProjects.textContent = "Proyectos Pendientes";
-    titlewentProjects.textContent = "Proyectos Realizados";
+    titlePenProjects.textContent = "Pendientes";
+    titlewentProjects.textContent = "Realizados";
 
     boxProjects.classList.add("boxProjects");
     upBoxProjects.classList.add("boxTodosMain");
@@ -151,15 +151,23 @@ function displayFormItemMain() {
         });
 
         btnAñadir.addEventListener("click", () => {
-            overlay.classList.remove("active");
-            popup.classList.remove("active");
+            if (
+                titleItem.value == "" ||
+                descriptionItem.value == "" ||
+                dueDate.value == ""
+            ) {
+                alert("Llena todos los campos por favor");
+            } else {
+                overlay.classList.remove("active");
+                popup.classList.remove("active");
 
-            addItemToPendient(
-                titleItem.value,
-                descriptionItem.value,
-                dueDate.value,
-                priorityListItem.value
-            );
+                addItemToPendient(
+                    titleItem.value,
+                    descriptionItem.value,
+                    dueDate.value,
+                    priorityListItem.value
+                );
+            }
         });
     });
 }
@@ -194,15 +202,23 @@ function displayFormProjects() {
         });
 
         btnAñadir.addEventListener("click", () => {
-            overlay.classList.remove("active");
-            popup.classList.remove("active");
+            if (
+                titleItem.value == "" ||
+                descriptionItem.value == "" ||
+                dueDate.value == ""
+            ) {
+                alert("Llena todos los campos por favor");
+            } else {
+                overlay.classList.remove("active");
+                popup.classList.remove("active");
 
-            addItemToProjects(
-                titleItem.value,
-                descriptionItem.value,
-                dueDate.value,
-                priorityListItem.value
-            );
+                addItemToProjects(
+                    titleItem.value,
+                    descriptionItem.value,
+                    dueDate.value,
+                    priorityListItem.value
+                );
+            }
         });
     });
 }

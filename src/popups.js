@@ -162,9 +162,9 @@ function doTareas(title, description, date, priority) {
     titleMuestra.textContent = this.title;
     descripcionMuestra.textContent = this.description;
     fechaMuestra.textContent = this.date;
-    deleteBox.value = "Delete";
+    deleteBox.value = "Eliminar";
     deleteBox.type = "button";
-    doyaBox.value = "Do ya";
+    doyaBox.value = "Completado";
     doyaBox.type = "button";
 
     divMuestra.classList.add("muestra");
@@ -235,9 +235,9 @@ function doProjects(title, description, date, priority) {
     titleMuestra.textContent = this.title;
     descripcionMuestra.textContent = this.description;
     fechaMuestra.textContent = this.date;
-    deleteBox.value = "Delete";
+    deleteBox.value = "Eliminar";
     deleteBox.type = "button";
-    doyaBox.value = "Do ya";
+    doyaBox.value = "Completado";
     doyaBox.type = "button";
 
     divMuestra.classList.add("muestra");
