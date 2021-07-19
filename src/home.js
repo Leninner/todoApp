@@ -5,6 +5,8 @@ const main = document.querySelector(".main");
 let tareas = [],
     proyectos = [];
 
+//NOTE: Función para crear el header
+
 function doHeader() {
     let header = document.createElement("div"),
         titleHeader = document.createElement("h1");
@@ -16,6 +18,8 @@ function doHeader() {
     header.appendChild(titleHeader);
     main.appendChild(header);
 }
+
+//NOTE: Función para crear los botones para añadir tarea o proyecto
 
 function doMainButtoms() {
     let divMainButtoms = document.createElement("div"),
@@ -34,6 +38,8 @@ function doMainButtoms() {
     divMainButtoms.append(addItem, addProject);
     main.appendChild(divMainButtoms);
 }
+
+//NOTE: Función para crear las cajas de las tareas
 
 function doBoxTodosMain() {
     let boxTask = document.createElement("div"),
@@ -63,6 +69,8 @@ function doBoxTodosMain() {
     main.appendChild(boxTask);
 }
 
+//NOTE: Función para crear las cajas de los proyectos
+
 function doBoxesProject() {
     let boxProjects = document.createElement("div"),
         titleProjects = document.createElement("h1"),
@@ -91,12 +99,16 @@ function doBoxesProject() {
     main.appendChild(boxProjects);
 }
 
+//NOTE: Función que reúne todas las funciones anteriores y crea la página de inicio
+
 function doHomePage() {
     doHeader();
     doMainButtoms();
     doBoxTodosMain();
     doBoxesProject();
 }
+
+//NOTE: Funciones para añadir las tareas y proyectos a sus respectivas cajas
 
 function addItemToPendient(title, description, date, priority) {
     let tarea = new doTareas(title, description, date, priority);
@@ -105,6 +117,8 @@ function addItemToPendient(title, description, date, priority) {
 function addItemToProjects(title, description, date, priority) {
     let proyecto = new doProjects(title, description, date, priority);
 }
+
+//NOTE: Funciones para mostrar los formularios y que hace uso de otras funciones para crear tareas o proyectos
 
 function displayFormItemMain() {
     const addItems = document.querySelector("#addItem");

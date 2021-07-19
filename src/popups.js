@@ -1,6 +1,6 @@
-import deleteItemsMain from "./deleteItems.js";
-
 const main = document.querySelector(".main");
+
+//NOTE: Funciones para crear los formularios
 
 function doFormItem(title, typeTitle) {
     let overlay = document.createElement("div"),
@@ -134,6 +134,8 @@ function doFormProjects(title, typeTitle) {
     main.appendChild(overlay);
 }
 
+//NOTE: Funciones constructoras para crear las cajas y añadir a las cajas correspondientes
+
 function doTareas(title, description, date, priority) {
     const pendientesMain = document.querySelector("#pendientesMain");
 
@@ -232,7 +234,8 @@ function doProjects(title, description, date, priority) {
     });
 
     doyaBox.addEventListener("click", () => {
-        console.log("Este botón completa cosas", doyaBox.classList);
+        console.log("Este botón completa cosas");
+        // TODO: Crear función para añadir tareas o proyectos a la caja de completadas
     });
 
     divMuestra.append(
