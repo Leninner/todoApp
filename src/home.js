@@ -115,8 +115,6 @@ function displayFormItemMain() {
             main.removeChild(main.childNodes[4]);
         }
 
-        console.log(main.childNodes);
-
         doFormItem();
 
         let cerrarPopup = document.querySelector(".cerrarPopup"),
@@ -158,8 +156,6 @@ function displayFormProjects() {
         if (main.childNodes[4]) {
             main.removeChild(main.childNodes[4]);
         }
-
-        console.log(main.childNodes);
 
         doFormProjects();
 

@@ -137,6 +137,8 @@ function doFormProjects() {
 function doTareas(title, description, date, priority) {
     const pendientesMain = document.querySelector("#pendientesMain");
 
+    console.log(pendientesMain.childNodes);
+
     this.title = title;
     this.description = description;
     this.date = date;
@@ -170,11 +172,11 @@ function doTareas(title, description, date, priority) {
     }
 
     deleteBox.addEventListener("click", () => {
-        console.log("Este botón borra cosas", deleteBox.classList);
+        pendientesMain.removeChild(deleteBox.parentElement);
     });
 
     doyaBox.addEventListener("click", () => {
-        console.log("Este botón completa cosas", doyaBox.classList);
+        console.log(doyaBox.parentNode);
     });
 
     //TODO: Crear botón para eliminar y completar cajas
@@ -226,7 +228,7 @@ function doProjects(title, description, date, priority) {
     }
 
     deleteBox.addEventListener("click", () => {
-        console.log("Este botón borra cosas", deleteBox.classList);
+        pendientesProjects.removeChild(deleteBox.parentElement);
     });
 
     doyaBox.addEventListener("click", () => {
