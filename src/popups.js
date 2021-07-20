@@ -1,3 +1,5 @@
+import doHeaderProjects from "./projects.js";
+
 const main = document.querySelector(".main");
 
 let tareasRealizadas = [],
@@ -217,13 +219,13 @@ function doTareas(title, description, date, priority) {
 }
 
 function doProjects(title, description, date, priority) {
-    const pendientesProjects = document.querySelector("#cajaPendientes"),
-        realizadosProjects = document.querySelector("#cajaRealizados");
-
     this.title = title;
     this.description = description;
     this.date = date;
     this.priority = priority;
+
+    const pendientesProjects = document.querySelector("#cajaPendientes"),
+        realizadosProjects = document.querySelector("#cajaRealizados");
 
     let divMuestra = document.createElement("div"),
         titleMuestra = document.createElement("h3"),
@@ -231,6 +233,10 @@ function doProjects(title, description, date, priority) {
         fechaMuestra = document.createElement("p"),
         deleteBox = document.createElement("input"),
         doyaBox = document.createElement("input");
+
+    divMuestra.addEventListener("click", () => {
+        doHeaderProjects(this.title, this.description);
+    });
 
     titleMuestra.textContent = this.title;
     descripcionMuestra.textContent = this.description;
@@ -281,8 +287,6 @@ function doProjects(title, description, date, priority) {
     );
 
     pendientesProjects.appendChild(divMuestra);
-
-    return divMuestra;
 }
 
 export { doFormItem, doTareas, doFormProjects, doProjects };

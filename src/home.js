@@ -115,9 +115,10 @@ function addItemToPendient(title, description, date, priority) {
     tareasPendientes.push(tarea);
 }
 
-function addItemToProjects(title, description, date, priority) {
-    let proyecto = new doProjects(title, description, date, priority);
+function addItemToProjects(titulo, descripcion, date, priority) {
+    let proyecto = new doProjects(titulo, descripcion, date, priority);
     proyectosPendientes.push(proyecto);
+    return proyecto;
 }
 
 //NOTE: Funciones para mostrar los formularios y que hace uso de otras funciones para crear tareas o proyectos
