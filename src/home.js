@@ -134,10 +134,10 @@ function displayFormItemMain() {
 
         doFormItem("Añadir Nueva Tarea", "Tarea");
 
-        let cerrarPopup = document.querySelector(".cerrarPopup"),
-            overlay = document.querySelector(".overlay"),
-            popup = document.querySelector(".popup"),
-            btnAñadir = document.querySelector(".btn-añadir"),
+        let cerrarPopup = document.querySelector(".cerrarPopupMain"),
+            overlay = document.querySelector(".overlayMain"),
+            popup = document.querySelector(".popupMain"),
+            btnAñadir = document.querySelector(".btn-añadirMain"),
             titleItem = document.querySelector("#titleItem"),
             descriptionItem = document.querySelector("#descriptionItem"),
             dueDate = document.querySelector("#dueDate"),

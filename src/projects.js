@@ -60,6 +60,11 @@ function eventsController() {
         cerrarPendientes = document.querySelector(".cerrarPendientes"),
         btnPorqui = document.querySelector(".btnPorqui");
 
+    let titleItem = document.querySelector("#titleProjects"),
+        descriptionItem = document.querySelector("#descriptionProjects"),
+        dueDateItem = document.querySelector("#dueDateProjects"),
+        priorityListItem = document.querySelector("#priorityProjectss");
+
     overlay.classList.add("active");
     popup.classList.add("active");
 
@@ -71,7 +76,16 @@ function eventsController() {
     btnPorqui.addEventListener("click", () => {
         overlay.classList.remove("active");
         popup.classList.remove("active");
-        alert("Este botón es demasiado cool!");
+        let task = new taskOfProjects(
+            titleItem.value,
+            descriptionItem.value,
+            dueDateItem.value,
+            priorityListItem.value
+        );
+
+        console.log(task);
+
+        createElements(task.title, task.description, task.date, task.priority);
     });
 }
 
@@ -120,7 +134,7 @@ function doFormulario() {
         optionPriorityThree = document.createElement("option"),
         btnAñadir = document.createElement("input");
 
-    titleAddItem.textContent = "Añado Chistes";
+    titleAddItem.textContent = "Añadir Tareas";
 
     overlay.classList.add("overlay", "pendientes");
     popup.classList.add("popup", "popupPendiente");
@@ -132,24 +146,21 @@ function doFormulario() {
     btnAñadir.type = "button";
     btnAñadir.value = "Añadir";
     titleItem.type = "text";
-    titleItem.placeholder = "typeTitle";
-    titleItem.setAttribute("id", "titleProject");
+    titleItem.placeholder = "Nombre de la Tarea";
+    titleItem.setAttribute("id", "titleProjects");
     descriptionItem.type = "text";
     descriptionItem.placeholder = "Añade una descripción";
-    descriptionItem.setAttribute("id", "descriptionProject");
+    descriptionItem.setAttribute("id", "descriptionProjects");
     dueDateItem.type = "date";
-    dueDateItem.setAttribute("id", "dueDateProject");
+    dueDateItem.setAttribute("id", "dueDateProjects");
     priorityListItem.name = "combo";
-    priorityListItem.setAttribute("id", "priorityProjects");
+    priorityListItem.setAttribute("id", "priorityProjectss");
     optionPriorityOne.value = "1";
     optionPriorityOne.textContent = "Prioridad: Alta";
-    optionPriorityOne.setAttribute("id", "optionOneProject");
     optionPriorityTwo.value = "2";
     optionPriorityTwo.textContent = "Prioridad: Media";
-    optionPriorityTwo.setAttribute("id", "optionTwoProject");
     optionPriorityThree.value = "3";
     optionPriorityThree.textContent = "Prioridad: Baja";
-    optionPriorityThree.setAttribute("id", "optionThreeProject");
 
     priorityListItem.append(
         optionPriorityOne,
@@ -169,6 +180,75 @@ function doFormulario() {
     popup.append(cerrarPopup, titleAddItem, formAddItem);
     overlay.appendChild(popup);
     main.appendChild(overlay);
+}
+
+function taskOfProjects(title, description, date, priority) {
+    this.title = title;
+    this.description = description;
+    this.date = date;
+    this.priority = priority;
+}
+
+function createElements(title, description, date, priority) {
+    const pendientesMain = document.querySelector("#proyectosPendientes"),
+        realizadosMain = document.querySelector("#proyectosRealizados");
+
+    let divMuestra = document.createElement("div"),
+        titleMuestra = document.createElement("h3"),
+        descripcionMuestra = document.createElement("p"),
+        fechaMuestra = document.createElement("p"),
+        deleteBox = document.createElement("input"),
+        doyaBox = document.createElement("input");
+
+    titleMuestra.textContent = title;
+    descripcionMuestra.textContent = description;
+    fechaMuestra.textContent = date;
+    deleteBox.value = "Eliminar";
+    deleteBox.type = "button";
+    doyaBox.value = "Completado";
+    doyaBox.type = "button";
+
+    divMuestra.classList.add("muestra");
+    deleteBox.classList.add("btnTareas", "delete");
+    doyaBox.classList.add("btnTareas", "doya");
+
+    if (priority == 1) {
+        divMuestra.classList.add("one");
+    } else if (priority == 2) {
+        divMuestra.classList.add("two");
+    } else {
+        divMuestra.classList.add("three");
+    }
+
+    deleteBox.addEventListener("click", () => {
+        divMuestra.remove();
+    });
+
+    doyaBox.addEventListener("click", () => {
+        divMuestra.append(
+            titleMuestra,
+            descripcionMuestra,
+            fechaMuestra,
+            deleteBox,
+            doyaBox
+        );
+
+        divMuestra.removeChild(doyaBox);
+        realizadosMain.appendChild(divMuestra);
+
+        tareasRealizadas.push(divMuestra);
+        console.log(tareasRealizadas);
+    });
+
+    divMuestra.append(
+        titleMuestra,
+        descripcionMuestra,
+        fechaMuestra,
+        deleteBox,
+        doyaBox
+    );
+
+    pendientesMain.appendChild(divMuestra);
 }
 
 export default doHeaderProjects;

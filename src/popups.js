@@ -26,12 +26,12 @@ function doFormItem(title, typeTitle) {
 
     titleAddItem.textContent = title;
 
-    overlay.classList.add("overlay");
-    popup.classList.add("popup");
-    cerrarPopup.classList.add("cerrarPopup");
+    overlay.classList.add("overlay", "overlayMain");
+    popup.classList.add("popup", "popupMain");
+    cerrarPopup.classList.add("cerrarPopup", "cerrarPopupMain");
     fas.classList.add("fas", "fa-times");
     contenedorInputs.classList.add("contenedor-inputs");
-    btnAñadir.classList.add("btn-añadir");
+    btnAñadir.classList.add("btn-añadir", "btn-añadirMain");
 
     btnAñadir.type = "button";
     btnAñadir.value = "Añadir";
