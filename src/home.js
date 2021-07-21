@@ -41,7 +41,7 @@ function doMainButtoms() {
 
 //NOTE: Función para crear las cajas de las tareas
 
-function doBoxTodosMain() {
+function doBoxTodosMain(first = "pendientesMain", second = "realizadasMain") {
     let boxTask = document.createElement("div"),
         titleTask = document.createElement("h1"),
         boxTodosMain = document.createElement("div"),
@@ -56,9 +56,9 @@ function doBoxTodosMain() {
     titleTask.textContent = "Tareas";
 
     penMain.classList.add("boxesMain");
-    penMain.setAttribute("id", "pendientesMain");
+    penMain.setAttribute("id", first);
     wentMain.classList.add("boxesMain");
-    wentMain.setAttribute("id", "realizadasMain");
+    wentMain.setAttribute("id", second);
     boxTodosMain.classList.add("boxTodosMain");
     boxTask.classList.add("boxProjects");
 

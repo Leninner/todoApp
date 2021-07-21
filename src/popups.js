@@ -128,12 +128,14 @@ function doFormProjects(title, typeTitle) {
         optionPriorityTwo,
         optionPriorityThree
     );
+
     contenedorInputs.append(
         titleItem,
         descriptionItem,
         dueDateItem,
         priorityListItem
     );
+
     formAddItem.append(contenedorInputs, btnAñadir);
     cerrarPopup.appendChild(fas);
     popup.append(cerrarPopup, titleAddItem, formAddItem);
@@ -143,11 +145,18 @@ function doFormProjects(title, typeTitle) {
 
 //NOTE: Funciones constructoras para crear las cajas y añadir a las cajas correspondientes
 
-function doTareas(title, description, date, priority) {
-    const pendientesMain = document.querySelector("#pendientesMain"),
-        realizadosMain = document.querySelector("#realizadasMain");
+function doTareas(
+    title,
+    description,
+    date,
+    priority,
+    first = "#pendientesMain",
+    second = "#realizadasMain"
+) {
+    const pendientesMain = document.querySelector(first),
+        realizadosMain = document.querySelector(second);
 
-    console.log(pendientesMain.childNodes);
+    // console.log(pendientesMain.childNodes);
 
     this.title = title;
     this.description = description;
@@ -199,11 +208,7 @@ function doTareas(title, description, date, priority) {
 
         tareasRealizadas.push(divMuestra);
         console.log(tareasRealizadas);
-        // pendientesMain.removeChild(divMuestra);
-        // TODO: Crear función para añadir tareas o proyectos a la caja de completadas
     });
-
-    //TODO: Crear botón para eliminar y completar cajas
 
     divMuestra.append(
         titleMuestra,

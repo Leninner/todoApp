@@ -96,6 +96,7 @@ h3 {
 .titleProjects {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .overlay {
@@ -272,4 +273,13 @@ h3 {
     background-color: green;
     color: white;
     font-weight: 600;
+}
+
+.btnProyectos {
+    margin-top: 50px;
+}
+
+.cajaProyectos {
+    font-size: 20px;
+    margin-left: 20px;
 }
