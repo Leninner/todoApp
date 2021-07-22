@@ -46,16 +46,9 @@ function doButtom() {
 
     divButtom.classList.add("main-buttoms", "btnProyectos");
 
-    // buttonAddProjects.addEventListener("click", () => {
-    //     eventsController();
-    // });
-
     divButtom.appendChild(buttonAddProjects);
     main.appendChild(divButtom);
 }
-
-//TODO: Solucionar problema de cajas repetidas
-//NOTE: Ver el código de la function displayFormItemMain de Home.js
 
 function addTaskToProjects() {
     const btn = document.querySelector("#botonh");
