@@ -183,7 +183,6 @@ function displayFormProjects() {
         }
 
         doFormProjects("Añadir Nuevo Proyecto", "Proyecto");
-        // doFormItem("Añadir Nuevo Proyecto");
 
         let cerrarPopup = document.querySelector(".cerrarPopup"),
             overlay = document.querySelector(".overlay"),

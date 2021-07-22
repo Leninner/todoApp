@@ -31,9 +31,10 @@ function doHeaderProjects(title, description) {
 
     main.appendChild(contenedorInfo);
 
-    doFormulario();
     doButtom();
     doBox();
+    doFormulario();
+    nueva();
 }
 
 function doButtom() {
@@ -46,12 +47,23 @@ function doButtom() {
 
     divButtom.classList.add("main-buttoms", "btnProyectos");
 
-    buttonAddProjects.addEventListener("click", () => {
-        eventsController();
-    });
+    // buttonAddProjects.addEventListener("click", () => {
+    //     eventsController();
+    // });
 
     divButtom.appendChild(buttonAddProjects);
     main.appendChild(divButtom);
+}
+
+//TODO: Solucionar problema de cajas repetidas
+//NOTE: Ver el código de la function displayFormItemMain de Home.js
+
+function nueva() {
+    const btn = document.querySelector("#botonh");
+
+    btn.addEventListener("click", () => {
+        eventsController();
+    });
 }
 
 function eventsController() {
@@ -74,8 +86,6 @@ function eventsController() {
     });
 
     btnPorqui.addEventListener("click", () => {
-        overlay.classList.remove("active");
-        popup.classList.remove("active");
         let task = new taskOfProjects(
             titleItem.value,
             descriptionItem.value,
@@ -83,9 +93,10 @@ function eventsController() {
             priorityListItem.value
         );
 
-        console.log(task);
-
         createElements(task.title, task.description, task.date, task.priority);
+
+        overlay.classList.remove("active");
+        popup.classList.remove("active");
     });
 }
 
@@ -235,9 +246,6 @@ function createElements(title, description, date, priority) {
 
         divMuestra.removeChild(doyaBox);
         realizadosMain.appendChild(divMuestra);
-
-        tareasRealizadas.push(divMuestra);
-        console.log(tareasRealizadas);
     });
 
     divMuestra.append(

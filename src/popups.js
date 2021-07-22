@@ -156,8 +156,6 @@ function doTareas(
     const pendientesMain = document.querySelector(first),
         realizadosMain = document.querySelector(second);
 
-    // console.log(pendientesMain.childNodes);
-
     this.title = title;
     this.description = description;
     this.date = date;
