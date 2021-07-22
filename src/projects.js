@@ -33,8 +33,7 @@ function doHeaderProjects(title, description) {
 
     doButtom();
     doBox();
-    doFormulario();
-    nueva();
+    addTaskToProjects();
 }
 
 function doButtom() {
@@ -58,27 +57,35 @@ function doButtom() {
 //TODO: Solucionar problema de cajas repetidas
 //NOTE: Ver el código de la function displayFormItemMain de Home.js
 
-function nueva() {
+function addTaskToProjects() {
     const btn = document.querySelector("#botonh");
 
     btn.addEventListener("click", () => {
+        //NOTE: Condicional para eliminar el problema de cajas repetidas
+        // El problema de las cajas repetidas se daba principalmente porque en se creaba 2 formularios al dar click en añadir; esto sucedía después de la primera iteración
+
+        if (main.childNodes[8]) {
+            main.removeChild(main.childNodes[8]);
+        }
+
+        doFormulario();
         eventsController();
     });
 }
 
 function eventsController() {
-    const overlay = document.querySelector(".pendientes"),
+    let overlay = document.querySelector(".pendientes"),
         popup = document.querySelector(".popupPendiente"),
         cerrarPendientes = document.querySelector(".cerrarPendientes"),
         btnPorqui = document.querySelector(".btnPorqui");
+
+    overlay.classList.add("active");
+    popup.classList.add("active");
 
     let titleItem = document.querySelector("#titleProjects"),
         descriptionItem = document.querySelector("#descriptionProjects"),
         dueDateItem = document.querySelector("#dueDateProjects"),
         priorityListItem = document.querySelector("#priorityProjectss");
-
-    overlay.classList.add("active");
-    popup.classList.add("active");
 
     cerrarPendientes.addEventListener("click", () => {
         overlay.classList.remove("active");
@@ -86,14 +93,32 @@ function eventsController() {
     });
 
     btnPorqui.addEventListener("click", () => {
-        let task = new taskOfProjects(
-            titleItem.value,
-            descriptionItem.value,
-            dueDateItem.value,
-            priorityListItem.value
-        );
+        console.log(main.childNodes);
 
-        createElements(task.title, task.description, task.date, task.priority);
+        if (
+            titleItem.value == "" ||
+            descriptionItem.value == "" ||
+            dueDateItem.value == ""
+        ) {
+            alert("Llena todos los campos por favor");
+        } else {
+            overlay.classList.remove("active");
+            popup.classList.remove("active");
+
+            let task = new taskOfProjects(
+                titleItem.value,
+                descriptionItem.value,
+                dueDateItem.value,
+                priorityListItem.value
+            );
+
+            createElements(
+                task.title,
+                task.description,
+                task.date,
+                task.priority
+            );
+        }
 
         overlay.classList.remove("active");
         popup.classList.remove("active");
@@ -257,6 +282,8 @@ function createElements(title, description, date, priority) {
     );
 
     pendientesMain.appendChild(divMuestra);
+
+    return divMuestra;
 }
 
 export default doHeaderProjects;
