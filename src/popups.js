@@ -237,10 +237,6 @@ function doProjects(title, description, date, priority) {
         deleteBox = document.createElement("input"),
         doyaBox = document.createElement("input");
 
-    divMuestra.addEventListener("click", () => {
-        doHeaderProjects(this.title, this.description);
-    });
-
     titleMuestra.textContent = this.title;
     descripcionMuestra.textContent = this.description;
     fechaMuestra.textContent = this.date;
@@ -261,8 +257,17 @@ function doProjects(title, description, date, priority) {
         divMuestra.classList.add("three");
     }
 
+    divMuestra.addEventListener("click", () => {
+        doHeaderProjects(this.title, this.description);
+    });
+
     deleteBox.addEventListener("click", () => {
         divMuestra.remove();
+        if (main.childNodes[7]) {
+            main.removeChild(main.childNodes[7]);
+            main.removeChild(main.childNodes[6]);
+            main.removeChild(main.childNodes[5]);
+        }
     });
 
     doyaBox.addEventListener("click", () => {
@@ -279,6 +284,12 @@ function doProjects(title, description, date, priority) {
 
         proyectosRealizados.push(divMuestra);
         console.log(proyectosRealizados);
+
+        if (main.childNodes[7]) {
+            main.removeChild(main.childNodes[7]);
+            main.removeChild(main.childNodes[6]);
+            main.removeChild(main.childNodes[5]);
+        }
     });
 
     divMuestra.append(

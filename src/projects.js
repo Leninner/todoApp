@@ -1,6 +1,10 @@
 const main = document.querySelector(".main");
 
 function doHeaderProjects(title, description) {
+    const realizadosProjects = document.querySelector("#cajaRealizados"),
+        divMuestra = document.querySelector(".muestra"),
+        doyaBox = document.querySelector(".doya");
+
     let contenedorInfo = document.createElement("div"),
         contenedorTitle = document.createElement("div"),
         contenedorButtoms = document.createElement("div");
@@ -15,6 +19,20 @@ function doHeaderProjects(title, description) {
     completadoButtom.value = "Completado";
     returnButtom.type = "button";
     returnButtom.value = "Volver";
+
+    completadoButtom.addEventListener("click", () => {
+        divMuestra.removeChild(doyaBox);
+        realizadosProjects.appendChild(divMuestra);
+        main.removeChild(main.childNodes[7]);
+        main.removeChild(main.childNodes[6]);
+        main.removeChild(main.childNodes[5]);
+    });
+
+    returnButtom.addEventListener("click", () => {
+        main.removeChild(main.childNodes[7]);
+        main.removeChild(main.childNodes[6]);
+        main.removeChild(main.childNodes[5]);
+    });
 
     contenedorButtoms.classList.add("main-buttoms");
 
